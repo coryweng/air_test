@@ -12,12 +12,13 @@ search = 0
 class DbWrapper:
     def __init__(self):
         self.client = MongoClient(
-            'mongodb+srv://allen:YToAqiPX2VQ20a0v@cluster0.wf5gy.mongodb.net/air?retryWrites=true&w=majority')
+            'mongodb+srv://cory:ujf8M7vmYoRxiCKT@cluster0.yqcs8.mongodb.net/test')
         self.db = self.client.air
 
+#資料擷取頻率
     def get_data(self, limit=None, minute=False):
         if minute:
-            if search:
+            if search: #搜尋用途，在#8, #9行調整
                 start_dt = start_date
                 end_dt = start_date + timedelta(days=range)
                 cursor = self.db.air_minute.find({'at': {'$gte': start_dt, '$lte': end_dt}}).sort([('_id', -1)])
@@ -52,6 +53,7 @@ class DbWrapper:
 
         return True
 
+#自動刪除舊資料
     def clear_db(self):
         # self.db.air.remove({})
         day_ago = datetime.now(timezone.utc) + timedelta(days=-10)

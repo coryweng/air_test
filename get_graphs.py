@@ -6,11 +6,11 @@ from utils import utc_to_local, format_title
 LINE_COLOR = "#27b5b3"
 SOURCES = ['VOC-CCS', 'VOC-TGS', 'PM25', 'PM10']
 
-
+#只出現180筆資料
 def get_graphs(db_wrapper, is_main_graphs=False):
     graphs = []
     if is_main_graphs:
-        class_names = 'graph-div col s12'
+        class_names = 'graph-div col s12' #用了 CSS的Bootstrap Grid System 
         data = db_wrapper.get_data(limit=180)  # minute=True
     else:  # small graphs
         class_names = 'graph-div col-xs-12 col-sm-6 col-md-6 col-lg-6'

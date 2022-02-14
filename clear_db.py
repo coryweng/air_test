@@ -1,3 +1,5 @@
+#清除資料庫資料用
+
 from db_wrapper import DbWrapper
 
 
